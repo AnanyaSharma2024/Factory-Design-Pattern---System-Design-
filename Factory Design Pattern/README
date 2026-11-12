@@ -1,0 +1,27 @@
+
+Factory Design Patterns: Study Notes
+
+
+1. Simple Factory Design Pattern
+
+Definition: A single factory class decides which concrete class to instantiate based on the input provided.
+• Product Interface (Burger): An interface containing a common method, such as prepare().
+• Concrete Products: Different types of burgers (e.g., CheeseBurger, VeggieBurger) implement the Burger interface and define their own prepare() logic.
+• The Factory (BurgerFactory): A single centralized class that asks what type of burger you want to order. It uses conditional logic (like if-else or switch) to create and return the requested burger object.
+• Limitation: Adding a new burger type requires modifying the existing factory code, which violates the Open/Closed Principle.
+
+2. Factory Method Design Pattern
+
+Definition: Defines an interface for creating an object, but lets subclasses decide which concrete class to instantiate.
+• Core Shift: Instead of one giant factory, the factory itself is now divided into specialized subclasses, just like the burgers were divided earlier.
+• Creator Interface (BurgerFactory): Declares an abstract factory method, such as createBurger().
+• Concrete Creators: Subclasses like SinghBurgerFactory and KingBurgerFactory implement createBurger() to produce their own specific styles of burgers.
+• Benefit: You can introduce new burger brands or factories without changing existing factory code.
+
+3. Abstract Factory Design Pattern
+
+Definition: Provides an interface for creating families of related objects without specifying their concrete classes.
+• Core Shift: The system is no longer limited to just burgers. It now includes related side items, such as Garlic Bread and its various types.
+• Multiple Product Interfaces: You have separate interfaces for each product family, such as Burger and GarlicBread.
+• Abstract Factory (MealFactory): Declares creation methods for every item in the family, such as createBurger() and createGarlicBread().
+• Concrete Factories: Branded factories like SinghFactory and KingFactory implement all methods to ensure matching families of products are created together (e.g., a Singh Burger paired with Singh Garlic Bread).
